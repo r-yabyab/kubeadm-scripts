@@ -1,11 +1,15 @@
 ## Kubeadm Cluster Setup Scripts
 
-Here is the supporting documentation and video demo.
+Before connecting worker to master, open these ports:
 
-1. [Documentation - Kubeadm Cluster Setup Guide](https://devopscube.com/setup-kubernetes-cluster-kubeadm/)
-2. [Kubeadm workflow explanation and demo video](https://youtu.be/xX52dc3u2HU)
+Protocol	Direction	Port Range	Purpose			        Used By
+TCP		    Inbound		6443		Kubernetes API server	All
+TCP		    Inbound		2379-2380	etcd server client API	kube-apiserver, etcd
+TCP		    Inbound		10250		Kubelet API		        Self, Control plane
+TCP		    Inbound		10259		kube-scheduler		    Self
+TCP		    Inbound		10257		kube-controller-manager	Self
 
-## 🚀 For Kubernetes Certification Aspirants
-
-If you are preparing for CKA, CKAD, CKS, or KCNA exam, **save 20%** today using code **SCRIPT20** at https://kube.promo/devops. It is a limited-time offer. Or Check out [Linux Foundation coupon](https://scriptcrunch.com/linux-foundation-coupon/) page for the latest voucher codes.
-
+WORKER NODES
+Protocol	Direction	Port Range	Purpose			    Used By
+TCP		    Inbound		10250		Kubelet API		    Self, Control plane
+TCP		    Inbound		30000-32767	NodePort Services†	All
