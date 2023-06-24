@@ -1,6 +1,6 @@
-## Kubeadm Cluster Setup Scripts
+## K8 Cluster Init Scripts (Kubeadm)
 
-Forked repo that lets you initialize a K8 cluster with Kubeadm in an Ubuntu 22.04 instance (t3.micro, 8gb volume, 0.0104USD/hr). Worker node can run on t2.micro free-tier.
+Script to initialize a K8 cluster with Kubeadm in an Ubuntu 22.04 instance (t3.micro, 8gb volume, 0.0104USD/hr). Worker node can run on t2.micro free-tier.
 <br />
 
 Before connecting worker and master nodes, open these inbound TCP ports ([details](https://kubernetes.io/docs/reference/networking/ports-and-protocols/)):
