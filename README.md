@@ -1,6 +1,6 @@
 ## K8s Cluster Init Scripts (Kubeadm)
 
-Script to initialize a K8s cluster with Kubeadm in an Ubuntu 22.04 instance (t3.micro, 8gb volume, 0.0104USD/hr). Worker node can run on t2.micro free-tier.
+Script to initialize a K8s cluster with Kubeadm and connect worker node to master node. Uses Ubuntu 22.04 (t3.micro, 8GB volume, 0.0104USD/hr). Worker node can run on t2.micro free-tier.
 <br />
 
 Before connecting worker and master nodes, open these inbound TCP ports ([details](https://kubernetes.io/docs/reference/networking/ports-and-protocols/)):
@@ -15,4 +15,4 @@ Before connecting worker and master nodes, open these inbound TCP ports ([detail
 <br />10250 (Kubelet API),
 <br />30000-32767	(NodePort Services)
 <br />
-<br /> Works with the latest K8s version (1.27.3). v1.26 is specified to download cri-o.
+<br /> Works with the latest K8s version (1.27.3).
