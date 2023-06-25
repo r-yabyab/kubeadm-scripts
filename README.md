@@ -27,8 +27,8 @@ Before connecting worker and master nodes, open these inbound TCP ports ([detail
 
 <br />Check Resources:
 <br />Mem:
-<br />- free -m
+<br />- free -h
 <br />Vol:
-<br />- df- h
+<br />- df -h
 <br />
 <br />Vol after setup: 3.8GB master, 3.6GB worker
