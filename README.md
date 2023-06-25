@@ -15,7 +15,7 @@ Before connecting worker and master nodes, open these inbound TCP ports ([detail
 <br />10250 (Kubelet API),
 <br />30000-32767	(NodePort Services)
 <br />
-<br /> Works with the latest K8s version (1.27.3).
+<br /> Works with the latest K8s version (1.27.3). kube-controller-manager & kube-scheduler will go into CrashLoopBackOff occasionally if numCPU requirement isn't met.
 
 <br />Other commands:
 <br />Check availability:
