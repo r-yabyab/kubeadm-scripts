@@ -11,7 +11,7 @@ Before connecting worker and master nodes, open these inbound TCP ports ([detail
 <br />10250 (Kubelet API), 
 <br />10259 (kube-scheduler), 
 <br />10257 (kube-controller-manager)
-<br />**179 - Calico nodes be running but not ready if you delete a namespace, use this port to keep it running**
+<br />*179 (Calico nodes)*
 <br />
 <br />**Worker**: 
 <br />10250 (Kubelet API),
