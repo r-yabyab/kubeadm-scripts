@@ -16,3 +16,14 @@ Before connecting worker and master nodes, open these inbound TCP ports ([detail
 <br />30000-32767	(NodePort Services)
 <br />
 <br /> Works with the latest K8s version (1.27.3).
+
+<br />Other commands:
+<br />Check availability:
+<br />- kubectl get po -n kube-system
+<br />- kubectl get --raw='/readyz?verbose'
+
+<br />Check Resources:
+<br />Mem:
+<br />- free -m
+<br />Vol:
+<br />- df- h
