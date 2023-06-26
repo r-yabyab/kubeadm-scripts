@@ -33,4 +33,4 @@ Before connecting worker and master nodes, open these inbound TCP ports ([detail
 <br />
 <br />Vol after setup: 3.8GB master, 3.6GB worker
 
-<br />Use elastic IP if you don't wanna recertify new addresses on instance reboot.
+<br />CA Certificates are generated on cluster init. Use AWS elastic IP to keep k8s running on reboot.
