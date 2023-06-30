@@ -38,3 +38,5 @@ Before connecting worker and master nodes, open these inbound TCP ports ([detail
 
 <br/>To use with Jenkins outside the cluster, install Jenkins through docker 
 sudo docker run -p -d 8080:8080 jenkins/jenkins
+<br/>Takes around 700 MB mem on standby.
+<br/>**Dockerfile needs to match node's OS**
