@@ -2,6 +2,11 @@
 #
 # Common setup for all servers (Control Plane and Nodes)
 
+# git clone repo
+# cd /scripts
+# sudo su
+# ./common.sh
+
 set -euxo pipefail
 
 # Variable Declaration

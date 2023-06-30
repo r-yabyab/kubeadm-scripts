@@ -12,6 +12,7 @@ Before connecting worker and master nodes, open these inbound TCP ports ([detail
 <br />10259 (kube-scheduler), 
 <br />10257 (kube-controller-manager)
 <br />*179 (Calico nodes)*
+<br />*8080 (optional Jenkins)*
 <br />
 <br />**Worker**: 
 <br />10250 (Kubelet API),
@@ -34,3 +35,6 @@ Before connecting worker and master nodes, open these inbound TCP ports ([detail
 <br />Vol after setup: 3.8GB master, 3.6GB worker
 
 <br />CA Certificates are generated on cluster init. Use AWS elastic IP to keep k8s running on reboot. A stopped instance with an elastic IP with incur $0.005/hr
+
+<br/>To use with Jenkins outside the cluster, install Jenkins through docker 
+sudo docker run -p -d 8080:8080 jenkins/jenkins
