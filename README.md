@@ -40,3 +40,4 @@ Before connecting worker and master nodes, open these inbound TCP ports ([detail
 sudo docker run -p -d 8080:8080 jenkins/jenkins
 <br/>Takes around 700 MB mem on standby.
 <br/>**Dockerfile needs to match node's OS**
+<br/>If your services uses .env, make sure the worker node has proper IAM roles for the paramter store.
