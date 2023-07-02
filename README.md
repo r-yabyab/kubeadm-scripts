@@ -35,8 +35,11 @@ Before connecting worker and master nodes, open these inbound TCP ports ([detail
 <br />Vol after setup: 3.8GB master, 3.6GB worker
 
 <br />CA Certificates are generated on cluster init. Use AWS elastic IP to keep k8s running on reboot. A stopped instance with an elastic IP with incur $0.005/hr
-<br />If your IP changes after reboot, just kubeadm reset -f --cri-socket=unix:///var/run/containerd/containerd.sock, then kubeadm init with new ip and hostname with --cri-socket=
+<br />If your Master IP changes after reboot, just kubeadm reset -f --cri-socket=unix:///var/run/crio/crio.sock, then kubeadm init with new ip and hostname with --cri-socket=, then setup kubeconfig and calico
+<br />Also, kubeadm reset -f for worker node, then kubeadm join
 <br />Probably remove folders, restart systemctl services, flush iptables if kubeadm reset -f doesn't work
+<br />https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/#tear-down
+<br />https://stackoverflow.com/questions/44698283/how-to-completely-uninstall-kubernetes
 
 <br/>To use with Jenkins outside the cluster, install Jenkins through docker 
 sudo docker run -p -d 8080:8080 jenkins/jenkins
