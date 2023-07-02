@@ -31,13 +31,16 @@ Before connecting worker and master nodes, open these inbound TCP ports ([detail
 <br />- free -h
 <br />Vol:
 <br />- df -h
-<br />
+<br />kubectl config view
 <br />Vol after setup: 3.8GB master, 3.6GB worker
 
 <br />CA Certificates are generated on cluster init. Use AWS elastic IP to keep k8s running on reboot. A stopped instance with an elastic IP with incur $0.005/hr
+<br />If your IP changes after reboot, just kubeadm reset --cri-socket=unix:///var/run/containerd/containerd.sock
 
 <br/>To use with Jenkins outside the cluster, install Jenkins through docker 
 sudo docker run -p -d 8080:8080 jenkins/jenkins
 <br/>Takes around 700 MB mem on standby.
+<br/>For webhook, http-jenkins-ip-port/github-webhook/, Content type application/json
 <br/>**Dockerfile needs to match node's OS**
-<br/>If your services uses .env, make sure the worker node has proper IAM roles for the paramter store.
+<br/>If your services uses .env, make sure the worker node has proper IAM roles for the parameter store.
+
