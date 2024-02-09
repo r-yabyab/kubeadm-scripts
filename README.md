@@ -49,4 +49,4 @@ sudo docker run -p -d 8080:8080 jenkins/jenkins
 <br/>If your services uses .env, make sure the worker node has proper IAM roles for the parameter store.
 
 <br/>
-<br/>Why is this needed? To avoid Amazon's $0.10/hr for EKS which still requires you to spin up linux instances.
+<br/>Why is any of this needed? To avoid Amazon's $0.10/hr for EKS which still requires you to spin up linux instances.
