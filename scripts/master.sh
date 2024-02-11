@@ -9,10 +9,12 @@ set -euxo pipefail
 PUBLIC_IP_ACCESS="false"
 NODENAME=$(hostname -s)
 POD_CIDR="192.168.0.0/16"
-# FLANNEL_CIDR="10.244.0.0/16"
+# FLANNEL_CIDR
+# POD_CIDR="10.244.0.0/16"
 
 # Pull required images
 
+# idk if I need this
 sudo kubeadm config images pull
 
 # Initialize kubeadm based on PUBLIC_IP_ACCESS
@@ -41,7 +43,9 @@ sudo chown "$(id -u)":"$(id -g)" "$HOME"/.kube/config
 
 # Install Claico Network Plugin Network 
 
-# curl https://raw.githubusercontent.com/projectcalico/calico/v3.25.0/manifests/calico.yaml -O
-curl https://raw.githubusercontent.com/projectcalico/calico/v3.26.1/manifests/calico.yaml -O
+# # curl https://raw.githubusercontent.com/projectcalico/calico/v3.25.0/manifests/calico.yaml -O
+# curl https://raw.githubusercontent.com/projectcalico/calico/v3.26.1/manifests/calico.yaml -O
 
-kubectl apply -f calico.yaml
+# kubectl apply -f calico.yaml
+
+kubectl apply -f https://github.com/flannel-io/flannel/releases/latest/download/kube-flannel.yml

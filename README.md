@@ -2,6 +2,7 @@
 
 <!-- Script to initialize a K8s cluster with Kubeadm and connect worker node to master node. Uses Ubuntu 22.04 (t3.micro, 8GB volume, 0.0104USD/hr). Worker node can run on t2.micro free-tier. -->
 Script to initialize a K8s cluster with Kubeadm and connect worker node to master node. Uses Ubuntu 22.04 (t3.small, 10GB volume, 0.0204USD/hr). Worker node can run on t2.micro free-tier.
+Master kubelet & cri-o are already set to systemd.
 <br />
 
 Before connecting worker and master nodes, open these inbound TCP ports ([details](https://kubernetes.io/docs/reference/networking/ports-and-protocols/)):
