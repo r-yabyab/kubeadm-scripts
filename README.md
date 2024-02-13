@@ -1,11 +1,11 @@
-## K8s Cluster Init Scripts (Kubeadm)
+# K8s Cluster Init Scripts (Kubeadm)
 
 <!-- Script to initialize a K8s cluster with Kubeadm and connect worker node to master node. Uses Ubuntu 22.04 (t3.micro, 8GB volume, 0.0104USD/hr). Worker node can run on t2.micro free-tier. -->
 Scripts to initialize a k8s cluster with Kubeadm, works with k8s version 1.29.1. Master runs on Ubuntu 22.04, t3.small, 10GB volume. Worker node runs on t3.micro.
 Master kubelet & cri-o are already set to systemd.
 <br />
 
-# Ports needed before initialization
+## Ports needed before initialization
 Before connecting worker and master nodes, open these inbound TCP ports ([details](https://kubernetes.io/docs/reference/networking/ports-and-protocols/)):
 <br />**Master**: 
 <br />6443 (Kubernetes API server), 
@@ -21,6 +21,7 @@ Before connecting worker and master nodes, open these inbound TCP ports ([detail
 <br />30000-32767	(NodePort Services)
 <br />
 
+## Check resources
 <br />Check Resources:
 <br />Mem:
 <br />- free -h
@@ -29,17 +30,18 @@ Before connecting worker and master nodes, open these inbound TCP ports ([detail
 <br />kubectl config view
 <br />Vol after setup: 3.8GB master, 3.6GB worker
 
-# Problems
+## Problems
 - Need a way to automatically assign --apiserver-advertise-address and generate CA certificates on Master when AWS cycles through IPs after reboot.
 
-# Resetting Master and Workers
-<br />kubeadm reset -f --cri-socket=unix:///var/run/crio/crio.sock for Master
+## Resetting Master and Workers
+kubeadm reset -f --cri-socket=unix:///var/run/crio/crio.sock for Master
 <br />kubeadm reset -f for Worker
 <br />Flush iptables if kubeadm reset -f doesn't work, also maybe remove folders and restart systemctl services
 <br />https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/#tear-down
 <br />https://stackoverflow.com/questions/44698283/how-to-completely-uninstall-kubernetes
 
-<br/>To use with Jenkins outside the cluster, install Jenkins through docker 
+## Jenkins integration
+To use with Jenkins outside the cluster, install Jenkins through docker 
 sudo docker run -p -d 8080:8080 jenkins/jenkins
 <br/>Takes around 700 MB mem on standby.
 <br/>For webhook, http-jenkins-ip-port/github-webhook/, Content type application/json
