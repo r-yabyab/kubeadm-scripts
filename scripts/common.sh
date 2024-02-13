@@ -107,7 +107,7 @@ sudo systemctl start crio.service
 # # sudo apt-get install -y kubelet="$KUBERNETES_VERSION" kubectl="$KUBERNETES_VERSION" kubeadm="$KUBERNETES_VERSION"
 # sudo apt-get install -y kubelet kubeadm kubectl
 
-sudo apt-mark hold kubelet kubeadm kubectl
+# sudo apt-mark hold kubelet kubeadm kubectl
 sudo apt-get update -y
 sudo apt-get install -y jq
 

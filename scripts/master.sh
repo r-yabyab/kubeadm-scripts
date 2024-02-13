@@ -8,13 +8,14 @@ set -euxo pipefail
 
 PUBLIC_IP_ACCESS="false"
 NODENAME=$(hostname -s)
-POD_CIDR="192.168.0.0/16"
+# POD_CIDR="192.168.0.0/16"
 # FLANNEL_CIDR
-# POD_CIDR="10.244.0.0/16"
+POD_CIDR="10.244.0.0/16"
 
 # Pull required images
 
-# idk if I need this
+# sets back to k8s vers 1.8... look into this bc it makes metrics lost on cni bridge
+# https://kubernetes.io/docs/reference/setup-tools/kubeadm/kubeadm-config/
 sudo kubeadm config images pull
 
 # Initialize kubeadm based on PUBLIC_IP_ACCESS

@@ -1,10 +1,11 @@
 ## K8s Cluster Init Scripts (Kubeadm)
 
 <!-- Script to initialize a K8s cluster with Kubeadm and connect worker node to master node. Uses Ubuntu 22.04 (t3.micro, 8GB volume, 0.0104USD/hr). Worker node can run on t2.micro free-tier. -->
-Script to initialize a K8s cluster with Kubeadm and connect worker node to master node. Uses Ubuntu 22.04 (t3.small, 10GB volume, 0.0204USD/hr). Worker node can run on t2.micro free-tier.
+Scripts to initialize a k8s cluster with Kubeadm, works with k8s version 1.29.1. Master runs on Ubuntu 22.04, t3.small, 10GB volume. Worker node runs on t3.micro.
 Master kubelet & cri-o are already set to systemd.
 <br />
 
+# Ports needed before initialization
 Before connecting worker and master nodes, open these inbound TCP ports ([details](https://kubernetes.io/docs/reference/networking/ports-and-protocols/)):
 <br />**Master**: 
 <br />6443 (Kubernetes API server), 
@@ -19,13 +20,6 @@ Before connecting worker and master nodes, open these inbound TCP ports ([detail
 <br />10250 (Kubelet API),
 <br />30000-32767	(NodePort Services)
 <br />
-<br /> Works with the latest K8s version (1.27.3). 
-<br />kube-controller-manager & kube-scheduler will go into CrashLoopBackOff occasionally if Mem requirement isn't met.
-
-<br />Other commands:
-<br />Check availability:
-<br />- kubectl get po -n kube-system
-<br />- kubectl get --raw='/readyz?verbose'
 
 <br />Check Resources:
 <br />Mem:
@@ -35,10 +29,13 @@ Before connecting worker and master nodes, open these inbound TCP ports ([detail
 <br />kubectl config view
 <br />Vol after setup: 3.8GB master, 3.6GB worker
 
-<br />CA Certificates are generated on cluster init. Use AWS elastic IP to keep k8s running on reboot. A stopped instance with an elastic IP with incur $0.005/hr
-<br />If your Master IP changes after reboot, just kubeadm reset -f --cri-socket=unix:///var/run/crio/crio.sock, then kubeadm init with new ip and hostname with --cri-socket=, then setup kubeconfig and calico
-<br />Also, kubeadm reset -f for worker node, then kubeadm join
-<br />Probably remove folders, restart systemctl services, flush iptables if kubeadm reset -f doesn't work
+# Problems
+- Need a way to automatically assign --apiserver-advertise-address and generate CA certificates on Master when AWS cycles through IPs after reboot.
+
+# Resetting Master and Workers
+<br />kubeadm reset -f --cri-socket=unix:///var/run/crio/crio.sock for Master
+<br />kubeadm reset -f for Worker
+<br />Flush iptables if kubeadm reset -f doesn't work, also maybe remove folders and restart systemctl services
 <br />https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/#tear-down
 <br />https://stackoverflow.com/questions/44698283/how-to-completely-uninstall-kubernetes
 
