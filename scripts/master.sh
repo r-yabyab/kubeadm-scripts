@@ -50,5 +50,5 @@ sudo chown "$(id -u)":"$(id -g)" "$HOME"/.kube/config
 
 # kubectl apply -f calico.yaml
 
-# probably don't need to do this since did POD_CIDR on init
+# 
 kubectl apply -f https://github.com/flannel-io/flannel/releases/latest/download/kube-flannel.yml
