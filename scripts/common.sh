@@ -87,6 +87,7 @@ sudo apt-mark hold kubelet kubeadm kubectl
 # sudo systemctl daemon-reload
 # sudo systemctl enable crio --now
 
+# Master kubelet & cri-o are systemd by default.
 echo "CRI runtime installed susccessfully"
 
 sudo systemctl start crio.service
