@@ -17,7 +17,7 @@ POD_CIDR="10.244.0.0/16"
 # sets back to k8s vers 1.8... look into this bc it makes metrics lost on cni bridge
 #probably dont need because images are pulled on kubeadm init
 # https://kubernetes.io/docs/reference/setup-tools/kubeadm/kubeadm-config/
-sudo kubeadm config images pull
+# sudo kubeadm config images pull
 
 # Initialize kubeadm based on PUBLIC_IP_ACCESS
 
