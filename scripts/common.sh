@@ -8,7 +8,7 @@ set -euxo pipefail
 
 # KUBERNETES_VERSION="1.26.1-00"
 # KUBERNETES_VERSION="1.27.3"
-KUBERNETES_VERSION="1.29.1"
+KUBERNETES_VERSION="1.29.2"
 
 # disable swap
 sudo swapoff -a
@@ -22,7 +22,7 @@ sudo apt-get update -y
 OS="xUbuntu_22.04"
 
 
-VERSION="$(echo ${KUBERNETES_VERSION} | grep -oE '[0-9]+\.[0-9]+')"
+# VERSION="$(echo ${KUBERNETES_VERSION} | grep -oE '[0-9]+\.[0-9]+')"
 
 # Create the .conf file to load the modules at bootup
 cat <<EOF | sudo tee /etc/modules-load.d/crio.conf
