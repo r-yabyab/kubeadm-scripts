@@ -8,7 +8,8 @@ set -euxo pipefail
 
 # KUBERNETES_VERSION="1.26.1-00"
 # KUBERNETES_VERSION="1.27.3"
-KUBERNETES_VERSION="1.29.2"
+# KUBERNETES_VERSION="1.29.2"
+KUBERNETES_VERSION="1.30.0"
 
 # disable swap
 sudo swapoff -a

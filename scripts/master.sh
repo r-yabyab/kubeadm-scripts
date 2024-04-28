@@ -52,3 +52,5 @@ sudo chown "$(id -u)":"$(id -g)" "$HOME"/.kube/config
 
 # 
 kubectl apply -f https://github.com/flannel-io/flannel/releases/latest/download/kube-flannel.yml
+
+# then join workers
