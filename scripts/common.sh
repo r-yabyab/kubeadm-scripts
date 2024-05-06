@@ -59,8 +59,7 @@ sudo apt-get update
 # sudo apt-get install -y software-properties-common curl
 sudo apt-get install -y apt-transport-https ca-certificates curl gpg
 
-# sudo su
-mkdir /etc/apt/keyrings
+# mkdir /etc/apt/keyrings
 
 # below outdated
 # sudo curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.28/deb/Release.key |
@@ -108,6 +107,9 @@ sudo apt-get install -y jq
 local_ip="$(hostname | grep -o '[^ip-].*' | tr '-' '.')"
 
 #run this with sudo su
+sudo su
 cat > /etc/default/kubelet << EOF
 KUBELET_EXTRA_ARGS=--node-ip=$local_ip
 EOF
+
+exit
