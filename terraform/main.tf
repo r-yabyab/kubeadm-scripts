@@ -34,7 +34,8 @@ resource "aws_instance" "my_instance_master" {
 # worker
 resource "aws_instance" "my_instance_worker" {
   ami           = "ami-008fe2fc65df48dac"
-  instance_type = "t3.micro"
+  instance_type = "t3.small"
+  # instance_type = "t3.micro"
   tags = {
     "Name" = "tfk8s-worker-node"
   }

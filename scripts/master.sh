@@ -65,5 +65,6 @@ kubectl apply -f https://github.com/flannel-io/flannel/releases/latest/download/
 # sync flannel and cni0 inet addresses
 sudo ip link delete cni0 type bridge
 
+# RESTART COREDNS PODS
 
 # then join workers
