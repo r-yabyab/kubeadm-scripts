@@ -62,4 +62,8 @@ sudo chown "$(id -u)":"$(id -g)" "$HOME"/.kube/config
 # FLANNEL CNI
 kubectl apply -f https://github.com/flannel-io/flannel/releases/latest/download/kube-flannel.yml
 
+# sync flannel and cni0 inet addresses
+sudo ip link delete cni0 type bridge
+
+
 # then join workers
