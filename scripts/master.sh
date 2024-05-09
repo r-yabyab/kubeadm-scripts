@@ -70,3 +70,8 @@ sudo ip link delete cni0 type bridge
 # then join workers
 
 #kubectl taint nodes $(hostname) node-role.kubernetes.io/control-plane:NoSchedule-
+
+#helm install
+curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
+chmod 700 get_helm.sh
+./get_helm.sh
