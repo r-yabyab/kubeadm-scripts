@@ -68,3 +68,5 @@ sudo ip link delete cni0 type bridge
 # RESTART COREDNS PODS
 
 # then join workers
+
+#kubectl taint nodes $(hostname) node-role.kubernetes.io/control-plane:NoSchedule-
