@@ -9,7 +9,7 @@ set -euxo pipefail
 # KUBERNETES_VERSION="1.26.1-00"
 # KUBERNETES_VERSION="1.27.3"
 # KUBERNETES_VERSION="1.29.2"
-KUBERNETES_VERSION="1.30.0"
+KUBERNETES_VERSION="1.30.3"
 
 # disable swap
 sudo swapoff -a
@@ -20,7 +20,7 @@ sudo apt-get update -y
 
 
 # Install CRI-O Runtime
-OS="xUbuntu_22.04"
+OS="xUbuntu_24.04"
 
 
 # VERSION="$(echo ${KUBERNETES_VERSION} | grep -oE '[0-9]+\.[0-9]+')"
@@ -107,9 +107,8 @@ sudo apt-get install -y jq
 local_ip="$(hostname | grep -o '[^ip-].*' | tr '-' '.')"
 
 #run this with sudo su
-sudo su
-cat > /etc/default/kubelet << EOF
+sudo su -c "cat > /etc/default/kubelet << EOF
 KUBELET_EXTRA_ARGS=--node-ip=$local_ip
-EOF
+EOF"
 
 exit

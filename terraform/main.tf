@@ -4,7 +4,7 @@ provider "aws" {
 
 # master
 resource "aws_instance" "my_instance_master" {
-  ami           = "ami-008fe2fc65df48dac"
+  ami           = "ami-0aff18ec83b712f05"
   instance_type = "t3.small"
   tags = {
     "Name" = "tfk8s-master-node"
@@ -33,7 +33,7 @@ resource "aws_instance" "my_instance_master" {
 
 # worker
 resource "aws_instance" "my_instance_worker" {
-  ami           = "ami-008fe2fc65df48dac"
+  ami           = "ami-0aff18ec83b712f05"
   instance_type = "t3.small"
   # instance_type = "t3.micro"
   tags = {
