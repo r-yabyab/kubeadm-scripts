@@ -46,6 +46,8 @@ resource "aws_instance" "my_instance_worker" {
   }
 }
 
+# Master runs on t3.small, 10GB volume. Worker node runs on t3.micro. Vol after setup: 3.8GB master, 3.6GB worker.
+
 # resource "aws_ebs_volume" "my_instance_worker_vol" {
 #   availability_zone = "us-west-2a"
 #   size              = 10 # Size in GiB
