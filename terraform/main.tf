@@ -4,7 +4,7 @@ provider "aws" {
 
 # master
 resource "aws_instance" "my_instance_master" {
-  ami           = "ami-008fe2fc65df48dac"
+  ami           = "ami-0aff18ec83b712f05"
   instance_type = "t3.small"
   tags = {
     "Name" = "tfk8s-master-node"
@@ -33,7 +33,7 @@ resource "aws_instance" "my_instance_master" {
 
 # worker
 resource "aws_instance" "my_instance_worker" {
-  ami           = "ami-008fe2fc65df48dac"
+  ami           = "ami-0aff18ec83b712f05"
   instance_type = "t3.small"
   # instance_type = "t3.micro"
   tags = {
@@ -45,6 +45,8 @@ resource "aws_instance" "my_instance_worker" {
     volume_size = 10
   }
 }
+
+# Master runs on t3.small, 10GB volume. Worker node runs on t3.micro. Vol after setup: 3.8GB master, 3.6GB worker.
 
 # resource "aws_ebs_volume" "my_instance_worker_vol" {
 #   availability_zone = "us-west-2a"
