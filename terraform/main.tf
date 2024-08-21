@@ -60,3 +60,13 @@ resource "aws_instance" "my_instance_worker" {
 #   volume_id   = aws_ebs_volume.my_instance_worker_vol.id
 #   instance_id = aws_instance.my_instance_worker.id
 # }
+
+output "ssh_command_master" {
+  value = "ssh -i path/to/your/pem ubuntu@${aws_instance.my_instance_master.public_ip}"
+  description = "Connect to master node"
+}
+
+output "ssh_command_worker" {
+  value = "ssh -i path/to/your/pem ubuntu@${aws_instance.my_instance_worker.public_ip}"
+  description = "Connect to worker node"
+}
