@@ -37,6 +37,7 @@ Temporary Items
 *.retry
 # Local .terraform directories
 **/.terraform/*
+.terraform/
 
 # .tfstate files
 *.tfstate
