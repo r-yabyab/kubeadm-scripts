@@ -66,7 +66,10 @@ kubectl apply -f https://github.com/flannel-io/flannel/releases/latest/download/
 sudo ip link delete cni0 type bridge
 
 # RESTART COREDNS PODS
-kubectl delete po -n kube-system $(kubectl get pods -n kube-system | grep coredns | awk '{print $1}') --now
+# kubectl delete po -n kube-system $(kubectl get pods -n kube-system | grep coredns | awk '{print $1}') --now
+kubectl delete pod -n kube-system -l k8s-app=kube-dns
+
+    ## if coredns gets stuck on containerCreating, delete bridge again
 
 # then join workers
 
@@ -80,7 +83,22 @@ chmod 700 get_helm.sh
 
 #more /etc/hosts
 
-#change kubernetes-dashboard-kong-proxy svc from ClusterIP to NodePort then use worker node's ip and port
+# change kubernetes-dashboard-kong-proxy svc from ClusterIP to NodePort 
+# then use worker node's ip and kong-proxy port (not 8443 or 443, 
+# don't need to port forward even if it instructs you to)
+
+    # if still can't connect via kong-proxy, restart coreDNS pods. Works with or without Flannel
 
 #Create service account for dashboard login
 #https://github.com/kubernetes/dashboard/blob/master/docs/user/access-control/creating-sample-user.md
+
+
+#cmds
+# kubectl get svc -n kubernetes-dashboard
+# kubectl edit svc kubernetes-dashboard-kong-proxy -n kubernetes-dashboard
+    # change ClusterIP to NodePort
+
+#when change values.yaml
+# helm upgrade kubernetes-dashboard kubernetes-dashboard/kubernetes-dashboard \
+# --namespace kubernetes-dashboard \
+# --values /path/to/your/modified/values.yaml

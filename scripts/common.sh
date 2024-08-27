@@ -9,7 +9,8 @@ set -euxo pipefail
 # KUBERNETES_VERSION="1.26.1-00"
 # KUBERNETES_VERSION="1.27.3"
 # KUBERNETES_VERSION="1.29.2"
-KUBERNETES_VERSION="1.30.3"
+KUBERNETES_VERSION=v1.31
+CRIO_VERSION=v1.30
 
 # disable swap
 sudo swapoff -a
@@ -68,14 +69,18 @@ sudo apt-get install -y apt-transport-https ca-certificates curl gpg
 #     sudo tee /etc/apt/sources.list.d/kubernetes.list
 
 # current vers
-curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.29/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
-echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.29/deb/ /' | sudo tee /etc/apt/sources.list.d/kubernetes.list
+curl -fsSL https://pkgs.k8s.io/core:/stable:/$KUBERNETES_VERSION/deb/Release.key |
+    gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+
+echo "deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/$KUBERNETES_VERSION/deb/ /" |
+    tee /etc/apt/sources.list.d/kubernetes.list
 
 
-sudo curl -fsSL https://pkgs.k8s.io/addons:/cri-o:/prerelease:/main/deb/Release.key |
-    sudo gpg --dearmor -o /etc/apt/keyrings/cri-o-apt-keyring.gpg
-sudo echo "deb [signed-by=/etc/apt/keyrings/cri-o-apt-keyring.gpg] https://pkgs.k8s.io/addons:/cri-o:/prerelease:/main/deb/ /" |
-    sudo tee /etc/apt/sources.list.d/cri-o.list
+curl -fsSL https://pkgs.k8s.io/addons:/cri-o:/stable:/$CRIO_VERSION/deb/Release.key |
+    gpg --dearmor -o /etc/apt/keyrings/cri-o-apt-keyring.gpg
+
+echo "deb [signed-by=/etc/apt/keyrings/cri-o-apt-keyring.gpg] https://pkgs.k8s.io/addons:/cri-o:/stable:/$CRIO_VERSION/deb/ /" |
+    tee /etc/apt/sources.list.d/cri-o.list
 
 # exit
 
