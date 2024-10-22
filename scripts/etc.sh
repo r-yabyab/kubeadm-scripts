@@ -22,6 +22,14 @@ echo 'export PATH=$GOPATH/bin:$GOROOT/bin:$PATH' >> $HOME/.bashrc
 source $HOME/.bashrc
 
 # binary will be $(go env GOPATH)/bin/golangci-lint
-curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(go env GOPATH)/bin v1.61.0
+curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(go env GOPATH)/bin v1.60.1
+
+
+sudo apt-get install make
 
 golangci-lint --version
+
+sudo apt install build-essential
+
+#to do make tests, run this
+# CGO_ENABLED=1 make tests
