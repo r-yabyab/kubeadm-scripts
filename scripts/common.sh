@@ -4,11 +4,6 @@
 
 set -euxo pipefail
 
-# Variable Declaration
-
-# KUBERNETES_VERSION="1.26.1-00"
-# KUBERNETES_VERSION="1.27.3"
-# KUBERNETES_VERSION="1.29.2"
 KUBERNETES_VERSION=v1.31
 CRIO_VERSION=v1.30
 
@@ -44,29 +39,9 @@ EOF
 
 sudo sysctl --system
 
-#### Deprecated
-# cat <<EOF | sudo tee /etc/apt/sources.list.d/devel:kubic:libcontainers:stable.list
-# deb https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/$OS/ /
-# EOF
-# cat <<EOF | sudo tee /etc/apt/sources.list.d/devel:kubic:libcontainers:stable:cri-o:"$VERSION".list
-# deb http://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable:/cri-o:/$VERSION/$OS/ /
-# EOF
-
-# curl -L https://download.opensuse.org/repositories/devel:kubic:libcontainers:stable:cri-o:"$VERSION"/$OS/Release.key | sudo apt-key --keyring /etc/apt/trusted.gpg.d/libcontainers.gpg add -
-# curl -L https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/$OS/Release.key | sudo apt-key --keyring /etc/apt/trusted.gpg.d/libcontainers.gpg add -
-
 sudo apt-get update
-#maybe not this one vv
-# sudo apt-get install -y software-properties-common curl
+
 sudo apt-get install -y apt-transport-https ca-certificates curl gpg
-
-# mkdir /etc/apt/keyrings
-
-# below outdated
-# sudo curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.28/deb/Release.key |
-#     sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
-# sudo echo "deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.28/deb/ /" |
-#     sudo tee /etc/apt/sources.list.d/kubernetes.list
 
 # current vers
 curl -fsSL https://pkgs.k8s.io/core:/stable:/$KUBERNETES_VERSION/deb/Release.key |
